@@ -1,0 +1,62 @@
+---
+title: "assignment1"
+---
+
+### 1.
+
+Social media platforms that storage user information and link them with user generated contents information.
+
+Online shopping system that links user information, purchase orders, merchandise infomration and merchants.
+
+Foreign exchange platforms that links trading pairs information, position information and user information. 
+
+### 2.
+
+
+We can propose the following applications in many fields:
+
+1. A relational database that contains countries data and conflict event data for political science research. 
+
+i. The purpose is to understand the conflict and countries in an interactive manner, rather than using conflict event data or country wise data alone.
+
+ii. In the country dataset, the unit will be country, and the country codes will be the key, with demographic, economic and other related data as values. In the conflict dataset, the unit will be the conflicts, with related duration, casualties, cause etc, in which country code will serve as a foreign key that links the country dataset.
+
+iii. The interface should be on a world map, with conflicts on it.
+
+2. A relational database that contains regions data and criminal activity data for criminology research.
+
+i. The purpose is to get a relational data of the crime rates and regions for relative researchs.
+
+ii. In the region dataset, there should be zip codes as the primary key, with demographic, economic and other related data as values. In the criminal activity dataset, the case number should be the key, with region zip code as foreign key and the case information as the values.
+
+iii. The interface can be a map with criminal activity shown on it.
+
+3. A relational database that links public companies, countries and regulation legislation activities can be established.
+
+i. This database can contain information for public companies, countries and laws so that researchers can have a better understanding between regulation and company behaviors.
+
+ii. In the country dataset, the unit will be country, and the country codes will be the key, with demographic, economic and other related data as values. In the company dataset, the unit will be company with their unique stock code as key and other information as value, with country as foreign key. In the legislation activity dataset, the unit would be a proposition of a bill, and the bill information will be the values with country being foregin key.
+
+iii. The interface can be a world map.
+
+### 3.
+
+It is more than just retrieving, but also extracting insights and make further usage of the data. 
+
+### 4.
+
+There were a emergence of large quantity of unstructured data. The growing online business need to deal with that, so there is a need for such system.
+
+### 5.
+
+The current database may requires predetermined template, making dynamic alteration of data a hard task.
+
+### 6.
+
+1. User data with unique user ID and other related information such as nickname, contact information etc as values;
+
+2. Post data with unique post ID and title, content and timestamp as values and user ID as a foreign key;
+
+3. Community data that contains posts and users. The community link can be key and posts and member users are values, linked with post ID and user ID.
+
+
