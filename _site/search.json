@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "proj6354",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "6354",
+    "section": "",
+    "text": "This is a website for EPPS6354"
+  },
+  {
+    "objectID": "assignment1.html",
+    "href": "assignment1.html",
+    "title": "assignment1",
+    "section": "",
+    "text": "1.\nSocial media platforms that storage user information and link them with user generated contents information.\nOnline shopping system that links user information, purchase orders, merchandise infomration and merchants.\nForeign exchange platforms that links trading pairs information, position information and user information.\n\n\n2.\nWe can propose the following applications in many fields:\n\nA relational database that contains countries data and conflict event data for political science research.\n\n\nThe purpose is to understand the conflict and countries in an interactive manner, rather than using conflict event data or country wise data alone.\nIn the country dataset, the unit will be country, and the country codes will be the key, with demographic, economic and other related data as values. In the conflict dataset, the unit will be the conflicts, with related duration, casualties, cause etc, in which country code will serve as a foreign key that links the country dataset.\nThe interface should be on a world map, with conflicts on it.\n\n\nA relational database that contains regions data and criminal activity data for criminology research.\n\n\nThe purpose is to get a relational data of the crime rates and regions for relative researchs.\nIn the region dataset, there should be zip codes as the primary key, with demographic, economic and other related data as values. In the criminal activity dataset, the case number should be the key, with region zip code as foreign key and the case information as the values.\nThe interface can be a map with criminal activity shown on it.\n\n\nA relational database that links public companies, countries and regulation legislation activities can be established.\n\n\nThis database can contain information for public companies, countries and laws so that researchers can have a better understanding between regulation and company behaviors.\nIn the country dataset, the unit will be country, and the country codes will be the key, with demographic, economic and other related data as values. In the company dataset, the unit will be company with their unique stock code as key and other information as value, with country as foreign key. In the legislation activity dataset, the unit would be a proposition of a bill, and the bill information will be the values with country being foregin key.\nThe interface can be a world map.\n\n\n\n3.\nIt is more than just retrieving, but also extracting insights and make further usage of the data.\n\n\n4.\nThere were a emergence of large quantity of unstructured data. The growing online business need to deal with that, so there is a need for such system.\n\n\n5.\nThe current database may requires predetermined template, making dynamic alteration of data a hard task.\n\n\n6.\n\nUser data with unique user ID and other related information such as nickname, contact information etc as values;\nPost data with unique post ID and title, content and timestamp as values and user ID as a foreign key;\nCommunity data that contains posts and users. The community link can be key and posts and member users are values, linked with post ID and user ID."
+  }
+]
