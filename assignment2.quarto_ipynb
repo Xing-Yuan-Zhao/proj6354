@@ -1,0 +1,65 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"assignment2\"\n",
+        "format:\n",
+        "  html:\n",
+        "    include-mermaid: true  \n",
+        "    mermaid-format: png   \n",
+        "    mermaid: \n",
+        "      version: \"10.2.0\"     \n",
+        "---\n",
+        "\n",
+        "\n",
+        "### 1. \n",
+        "\n",
+        "Relation schema is the template for the datasets;\n",
+        "\n",
+        "Relation is a dataframe;\n",
+        "\n",
+        "An instance is an actual database.\n",
+        "\n",
+        "Using the university database as an example:\n",
+        "\n",
+        "Relation schema is that such university database should contain departments table, students table, employees table, and courses table, and these tables are connected with certain keys;\n",
+        "\n",
+        "A relation in such schema is one of the said tables;\n",
+        "\n",
+        "An istance is, for example, a UTD database with EPPS, JSOM and etc. department tables, UTD students tables, UTD employees table and UTD courses table connected with perdetermined sets of keys.\n",
+        "\n",
+        "### 2.\n",
+        "\n",
+        "\n",
+        "```{html}\n",
+        "<script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs\"></script>\n",
+        "<pre class=\"mermaid\">\n",
+        "erDiagram\n",
+        "    table1 {\n",
+        "        key1 PK\n",
+        "        key2 PK\n",
+        "    }\n",
+        "    table2 {\n",
+        "        key1 PK\n",
+        "        key2 PK\n",
+        "    }\n",
+        "    table1 ||--|| table2 : key1\n",
+        "</pre>\n",
+        "```"
+      ],
+      "id": "33b82244"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

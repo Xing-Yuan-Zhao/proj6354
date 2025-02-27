@@ -1,0 +1,122 @@
+---
+title: "6354proposal"
+author: "Xingyuan Zhao"
+---
+
+## Datebase Purpose
+
+The motivation of this database is to create a database about internet censorship, cyber attacks and social network among the countries for future research usage.
+
+This database enable researchers to answer the following questions: How does the censorship rules spread across countries that share stronger relations? Why some countries are considered greater threats even though they initiate less cyber attacks? How does recent AI technology adoption affect the type of censorship and cyber attacks?
+
+
+## Schema
+
+```{mermaid}
+erDiagram
+    COUNTRY ||--|{ POLICY: country_id
+    
+    COUNTRY ||--|{ REQUEST: country_id
+    
+    COUNTRY ||--|{ REQUEST_DETAIL: country_id
+    
+    COUNTRY ||--|{ CYBER_ATTACK: country_id
+    
+    COUNTRY ||--|{ EDGELIST: country_id
+    
+    COUNTRY {
+        string country_id PK
+        float covariates
+    }
+    
+    POLICY {
+        string url PK
+        string country_id FK
+        datetime issue_time
+        string title
+        string text
+        category document_type
+        category issuing_entity
+        category type_of_law
+        category type_of_liability
+    }
+    
+    REQUEST {
+        string country_id PK
+        datetime request_time PK
+        category reason PK
+        integer n_requests
+    }
+    
+    REQUEST_DETAIL {
+        string country_id PK
+        datetime request_time PK
+        category requestor PK
+        integer n_requests
+        integer n_items_requested
+        integer n_removed_legal
+        integer n_removed_policy
+        integer n_no_action_taken
+    }
+    
+    CYBER_ATTACK {
+        string source1 PK
+        string country_id FK
+        string victim FK
+        category type
+    }
+    
+    EDGELIST {
+        string country_id FK
+        string interaction PK
+        string interaction_strength
+    }
+    
+```
+
+## Methods and Explanation
+
+### COUNTRY
+
+The country df contains all country level covariates. The unit is country and the country id is the primary key
+
+### POLICY
+
+The policy df contains all policy level information from Wilmap. The unit is a piece of policy, and their unique urls serve as primary key. Country id is the foreign key here. The df also contains policy wise information such as their text and labels that are already classified.
+
+### REQUEST and REQUEST_DETAIL
+
+The request and request detail dfs are the takedown initiations submitted by the governments to the Google platform. The request df's unit is country-date-reason, using (country_id, request_time, reason) as primary key. The values in it are country-date level frequencies for each reasons. As for the detailed request df, it uses (country_id, request_time, requestor) as primary key, further separating the requests by the countries' requestor agencies. 
+
+### CYBER ATTACK
+
+The cyber attack df is merged from 2 different sourced dfs that records the cyber attacks. The unit is incident and the sources' unique url will serve as a primary key. The initiator and victim countries also uses country id as values, served as foregin keys.
+
+### EDGE LIST
+
+The edge list is a countries pairs social network data that records the countries interactions and their relations. The unit will be a dyad of two countries, but with a country column that storage the dyad relations of such country which also conveniently served as a primary key.
+
+
+## Database Interface
+
+```{mermaid}
+flowchart TB
+  
+
+  user[user] <--> network((country network))
+
+  
+  subgraph frontend [frontend]
+  events(events) --> network((country network))
+  end
+  
+  network((country network)) --> database[(Database)]
+  
+  subgraph backend [backend]
+  database[(Database)] --> response(data response)
+  end
+
+  
+  response(data response) --> events(events)
+  response(data response) --> network((country network))
+```

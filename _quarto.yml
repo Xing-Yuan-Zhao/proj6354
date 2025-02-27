@@ -11,6 +11,13 @@ website:
         text: About
       - href: assignment1.qmd
         text: Assignment 1
+      - href: assignment2.qmd
+        text: Assignment 2
+      - href: 6354proposal.qmd
+        text: Proposal
+      - href: 6354proposal_pre.qmd
+        text: Proposal Presentation
+        
 
 format:
   html:

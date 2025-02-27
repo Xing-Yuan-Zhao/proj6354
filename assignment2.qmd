@@ -1,0 +1,78 @@
+---
+title: "assignment2"
+format:
+  html:
+    include-mermaid: true  
+    mermaid-format: png   
+---
+
+### 1. 
+
+Relation schema is the template for the datasets;
+
+Relation is a dataframe;
+
+An instance is an actual database.
+
+Using the university database as an example:
+
+Relation schema is that such university database should contain departments table, students table, employees table, and courses table, and these tables are connected with certain keys;
+
+A relation in such schema is one of the said tables;
+
+An istance is, for example, a UTD database with EPPS, JSOM and etc. department tables, UTD students tables, UTD employees table and UTD courses table connected with perdetermined sets of keys.
+
+### 2.
+
+```{mermaid}
+erDiagram
+    BRANCH ||--|{ ACCOUNT: branch_name
+    
+    CUSTOMER }|--|| BORROWER: ID
+    CUSTOMER ||--|{ DEPOSITOR: ID
+    
+    DEPOSITOR ||--|{ ACCOUNT: account_number
+    
+    LOAN ||--|{ BORROWER: loan_number
+    LOAN }|--|| BRANCH: branch_name
+    
+    BRANCH {
+        string branch_name PK
+        string branch_city
+        string assets
+    }
+    
+    ACCOUNT{
+        string account_number PK
+        string branch_name FK
+        float balance
+    }
+    
+    
+    CUSTOMER{
+        string ID FK
+        string customer_name PK
+        string customer_street
+        string customer_city
+    }
+    BORROWER{
+        string ID PK
+        string loan_number FK
+    }
+    DEPOSITOR{
+        string ID PK
+        string account_number FK
+    }
+
+    
+    
+    LOAN{
+        string loan_number PK
+        string branch_name FK
+    }
+    
+```
+
+### 3
+
+Shown in the plot above.
