@@ -26,5 +26,89 @@
     "title": "assignment2",
     "section": "",
     "text": "1.\nRelation schema is the template for the datasets;\nRelation is a dataframe;\nAn instance is an actual database.\nUsing the university database as an example:\nRelation schema is that such university database should contain departments table, students table, employees table, and courses table, and these tables are connected with certain keys;\nA relation in such schema is one of the said tables;\nAn istance is, for example, a UTD database with EPPS, JSOM and etc. department tables, UTD students tables, UTD employees table and UTD courses table connected with perdetermined sets of keys.\n\n\n2.\n\n\n\n\n\n\n\n\n\n\n\n\n\n3\nShown in the plot above."
+  },
+  {
+    "objectID": "t1.html",
+    "href": "t1.html",
+    "title": "Assignment 2",
+    "section": "",
+    "text": "library(haven)\nlibrary(descr)\nlibrary(tidyverse)\nlibrary(dplyr)\nlibrary(ggcorrplot)\nlibrary(ggplot2)"
+  },
+  {
+    "objectID": "t1.html#libraries",
+    "href": "t1.html#libraries",
+    "title": "Assignment 2",
+    "section": "",
+    "text": "library(haven)\nlibrary(descr)\nlibrary(tidyverse)\nlibrary(dplyr)\nlibrary(ggcorrplot)\nlibrary(ggplot2)"
+  },
+  {
+    "objectID": "t1.html#load-data",
+    "href": "t1.html#load-data",
+    "title": "Assignment 2",
+    "section": "Load Data",
+    "text": "Load Data\n\nTEDS_2016 &lt;- read_dta(\"https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true\")\nTEDS_2016$PartyID &lt;- factor(TEDS_2016$PartyID, labels = c(\"KMT\", \"DPP\", \"NP\", \"PFP\", \"TSU\", \"NPP\", \"NA\"))\n\n\nhead(TEDS_2016$PartyID)\n\n[1] NA  NA  KMT NA  NA  DPP\nLevels: KMT DPP NP PFP TSU NPP NA\n\ntail(TEDS_2016$PartyID)\n\n[1] NA  NA  DPP NA  NA  NA \nLevels: KMT DPP NP PFP TSU NPP NA\n\nfreq(TEDS_2016$PartyID)\n\n\n\n\n\n\n\n\nTEDS_2016$PartyID \n      Frequency  Percent\nKMT         388  22.9586\nDPP         591  34.9704\nNP            3   0.1775\nPFP          32   1.8935\nTSU           5   0.2959\nNPP          43   2.5444\nNA          628  37.1598\nTotal      1690 100.0000\n\n\n\nT2 &lt;- TEDS_2016 %&gt;%\n  count(PartyID) %&gt;%\n  mutate(perc = n / sum(n))\n \nggplot(T2, aes(x = reorder(PartyID, -perc), y = perc, fill = PartyID)) +\n  geom_bar(stat = \"identity\") +\n  ylab(\"Party Support (%)\") +\n  xlab(\"Taiwan Political Parties\") +\n  theme_bw() +\n  scale_fill_manual(values = c(\"steelblue\", \"forestgreen\", \"khaki1\", \"orange\", \"goldenrod\", \"yellow\", \"grey\"))\n\n\n\n\n\n\n\n\n\nTEDS_2016 &lt;- TEDS_2016 %&gt;%\n  mutate(female = ifelse(Sex == 2, 1, 0))\ntable(TEDS_2016$female)\n\n\n  0   1 \n868 822 \n\n\n\ncor_vars &lt;- TEDS_2016 %&gt;% select(Tondu, female, age, DPP, income, edu, Taiwanese, Econ_worse)\ncor_matrix &lt;- cor(cor_vars, use = \"pairwise.complete.obs\")\n \nggcorrplot(cor_matrix, \n           method = \"circle\", \n           type = \"lower\",\n           lab = TRUE,\n           colors = c(\"red\", \"white\", \"blue\"),\n           title = \"Correlation Matrix\")\n\n\n\n\n\n\n\n\n\nmodel &lt;- lm(votetsai ~ female + age + DPP + income + edu + Taiwanese + Econ_worse, data = TEDS_2016)\nsummary(model)\n\n\nCall:\nlm(formula = votetsai ~ female + age + DPP + income + edu + Taiwanese + \n    Econ_worse, data = TEDS_2016)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1.07711 -0.23920 -0.02419  0.24106  0.86339 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  0.4408344  0.0727487   6.060  1.8e-09 ***\nfemale      -0.0256167  0.0209882  -1.221  0.22250    \nage         -0.0021676  0.0008307  -2.609  0.00918 ** \nDPP          0.4798515  0.0228743  20.978  &lt; 2e-16 ***\nincome      -0.0035722  0.0039547  -0.903  0.36655    \nedu         -0.0232000  0.0095903  -2.419  0.01570 *  \nTaiwanese    0.2531388  0.0239856  10.554  &lt; 2e-16 ***\nEcon_worse   0.0636800  0.0214794   2.965  0.00309 ** \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.3663 on 1249 degrees of freedom\n  (433 observations deleted due to missingness)\nMultiple R-squared:  0.4306,    Adjusted R-squared:  0.4274 \nF-statistic: 134.9 on 7 and 1249 DF,  p-value: &lt; 2.2e-16\n\n\n\nTEDS_2016$Tondu &lt;- factor(TEDS_2016$Tondu, levels = unique(TEDS_2016$Tondu), labels = c(\"Unification now\", \"Status quo, unif. in future\", \"Status quo, decide later\", \"Status quo forever\", \"Status quo, indep. in future\", \"Independence now\", \"No response\"))\nfrequency_table &lt;- table(TEDS_2016$Tondu)\nprint(frequency_table)\n\n\n             Unification now  Status quo, unif. in future \n                         546                          380 \n    Status quo, decide later           Status quo forever \n                         121                          328 \nStatus quo, indep. in future             Independence now \n                         108                          180 \n                 No response \n                          27"
+  },
+  {
+    "objectID": "6354proposal.html",
+    "href": "6354proposal.html",
+    "title": "6354proposal",
+    "section": "",
+    "text": "The motivation of this database is to create a database about internet censorship, cyber attacks and social network among the countries for future research usage.\nThis database enable researchers to answer the following questions: How does the censorship rules spread across countries that share stronger relations? Why some countries are considered greater threats even though they initiate less cyber attacks? How does recent AI technology adoption affect the type of censorship and cyber attacks?"
+  },
+  {
+    "objectID": "6354proposal.html#datebase-purpose",
+    "href": "6354proposal.html#datebase-purpose",
+    "title": "6354proposal",
+    "section": "",
+    "text": "The motivation of this database is to create a database about internet censorship, cyber attacks and social network among the countries for future research usage.\nThis database enable researchers to answer the following questions: How does the censorship rules spread across countries that share stronger relations? Why some countries are considered greater threats even though they initiate less cyber attacks? How does recent AI technology adoption affect the type of censorship and cyber attacks?"
+  },
+  {
+    "objectID": "6354proposal.html#schema",
+    "href": "6354proposal.html#schema",
+    "title": "6354proposal",
+    "section": "Schema",
+    "text": "Schema\n\n\n\n\n\nerDiagram\n    COUNTRY ||--|{ POLICY: country_id\n    \n    COUNTRY ||--|{ REQUEST: country_id\n    \n    COUNTRY ||--|{ REQUEST_DETAIL: country_id\n    \n    COUNTRY ||--|{ CYBER_ATTACK: country_id\n    \n    COUNTRY ||--|{ EDGELIST: country_id\n    \n    COUNTRY {\n        string country_id PK\n        float covariates\n    }\n    \n    POLICY {\n        string url PK\n        string country_id FK\n        datetime issue_time\n        string title\n        string text\n        category document_type\n        category issuing_entity\n        category type_of_law\n        category type_of_liability\n    }\n    \n    REQUEST {\n        string country_id PK\n        datetime request_time PK\n        category reason PK\n        integer n_requests\n    }\n    \n    REQUEST_DETAIL {\n        string country_id PK\n        datetime request_time PK\n        category requestor PK\n        integer n_requests\n        integer n_items_requested\n        integer n_removed_legal\n        integer n_removed_policy\n        integer n_no_action_taken\n    }\n    \n    CYBER_ATTACK {\n        string source1 PK\n        string country_id FK\n        string victim FK\n        category type\n    }\n    \n    EDGELIST {\n        string country_id FK\n        string interaction PK\n        string interaction_strength\n    }"
+  },
+  {
+    "objectID": "6354proposal.html#methods-and-explanation",
+    "href": "6354proposal.html#methods-and-explanation",
+    "title": "6354proposal",
+    "section": "Methods and Explanation",
+    "text": "Methods and Explanation\n\nCOUNTRY\nThe country df contains all country level covariates. The unit is country and the country id is the primary key\n\n\nPOLICY\nThe policy df contains all policy level information from Wilmap. The unit is a piece of policy, and their unique urls serve as primary key. Country id is the foreign key here. The df also contains policy wise information such as their text and labels that are already classified.\n\n\nREQUEST and REQUEST_DETAIL\nThe request and request detail dfs are the takedown initiations submitted by the governments to the Google platform. The request df’s unit is country-date-reason, using (country_id, request_time, reason) as primary key. The values in it are country-date level frequencies for each reasons. As for the detailed request df, it uses (country_id, request_time, requestor) as primary key, further separating the requests by the countries’ requestor agencies.\n\n\nCYBER ATTACK\nThe cyber attack df is merged from 2 different sourced dfs that records the cyber attacks. The unit is incident and the sources’ unique url will serve as a primary key. The initiator and victim countries also uses country id as values, served as foregin keys.\n\n\nEDGE LIST\nThe edge list is a countries pairs social network data that records the countries interactions and their relations. The unit will be a dyad of two countries, but with a country column that storage the dyad relations of such country which also conveniently served as a primary key."
+  },
+  {
+    "objectID": "6354proposal.html#database-interface",
+    "href": "6354proposal.html#database-interface",
+    "title": "6354proposal",
+    "section": "Database Interface",
+    "text": "Database Interface\n\n\n\n\n\nflowchart TB\n  \n\n  user[user] &lt;--&gt; network((country network))\n\n  \n  subgraph frontend [frontend]\n  events(events) --&gt; network((country network))\n  end\n  \n  network((country network)) --&gt; database[(Database)]\n  \n  subgraph backend [backend]\n  database[(Database)] --&gt; response(data response)\n  end\n\n  \n  response(data response) --&gt; events(events)\n  response(data response) --&gt; network((country network))"
+  },
+  {
+    "objectID": "6354proposal_pre.html#datebase-purpose",
+    "href": "6354proposal_pre.html#datebase-purpose",
+    "title": "6354proposal",
+    "section": "Datebase Purpose",
+    "text": "Datebase Purpose\nThe motivation of this database is to create a database about internet censorship, cyber attacks and social network among the countries for future research usage.\nThis database enable researchers to answer the following questions: How does the censorship rules spread across countries that share stronger relations? Why some countries are considered greater threats even though they initiate less cyber attacks? How does recent AI technology adoption affect the type of censorship and cyber attacks?"
+  },
+  {
+    "objectID": "6354proposal_pre.html#schema",
+    "href": "6354proposal_pre.html#schema",
+    "title": "6354proposal",
+    "section": "Schema",
+    "text": "Schema\n\n\n\n\n\nerDiagram\n    COUNTRY ||--|{ POLICY: country_id\n    \n    COUNTRY ||--|{ REQUEST: country_id\n    \n    COUNTRY ||--|{ REQUEST_DETAIL: country_id\n    \n    COUNTRY ||--|{ CYBER_ATTACK: country_id\n    \n    COUNTRY ||--|{ EDGELIST: country_id\n    \n    COUNTRY {\n        string country_id PK\n        float covariates\n    }\n    \n    POLICY {\n        string url PK\n        string country_id FK\n        datetime issue_time\n        string title\n        string text\n        category document_type\n        category issuing_entity\n        category type_of_law\n        category type_of_liability\n    }\n    \n    REQUEST {\n        string country_id PK\n        datetime request_time PK\n        category reason PK\n        integer n_requests\n    }\n    \n    REQUEST_DETAIL {\n        string country_id PK\n        datetime request_time PK\n        category requestor PK\n        integer n_requests\n        integer n_items_requested\n        integer n_removed_legal\n        integer n_removed_policy\n        integer n_no_action_taken\n    }\n    \n    CYBER_ATTACK {\n        string source1 PK\n        string country_id FK\n        string victim FK\n        category type\n    }\n    \n    EDGELIST {\n        string country_id FK\n        string interaction PK\n        string interaction_strength\n    }"
+  },
+  {
+    "objectID": "6354proposal_pre.html#methods-and-explanation",
+    "href": "6354proposal_pre.html#methods-and-explanation",
+    "title": "6354proposal",
+    "section": "Methods and Explanation",
+    "text": "Methods and Explanation\nCOUNTRY\nThe country df contains all country level covariates. The unit is country and the country id is the primary key"
+  },
+  {
+    "objectID": "6354proposal_pre.html#database-interface",
+    "href": "6354proposal_pre.html#database-interface",
+    "title": "6354proposal",
+    "section": "Database Interface",
+    "text": "Database Interface\n\n\n\n\n\nflowchart TB\n  \n\n  user[user] &lt;--&gt; network((country network))\n\n  \n  subgraph frontend [frontend]\n  events(events) --&gt; network((country network))\n  end\n  \n  network((country network)) --&gt; database[(Database)]\n  \n  subgraph backend [backend]\n  database[(Database)] --&gt; response(data response)\n  end\n\n  \n  response(data response) --&gt; events(events)\n  response(data response) --&gt; network((country network))"
   }
 ]

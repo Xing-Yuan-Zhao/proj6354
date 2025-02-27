@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Xingyuan Zhao">
 
-<title>6354</title>
+<title>6354proposal – 6354</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +67,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -93,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -105,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Assignment 2</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./6354proposal.html"> 
+    <a class="nav-link active" href="./6354proposal.html" aria-current="page"> 
 <span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
@@ -123,21 +127,43 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#datebase-purpose" id="toc-datebase-purpose" class="nav-link active" data-scroll-target="#datebase-purpose">Datebase Purpose</a></li>
+  <li><a href="#schema" id="toc-schema" class="nav-link" data-scroll-target="#schema">Schema</a></li>
+  <li><a href="#methods-and-explanation" id="toc-methods-and-explanation" class="nav-link" data-scroll-target="#methods-and-explanation">Methods and Explanation</a>
+  <ul class="collapse">
+  <li><a href="#country" id="toc-country" class="nav-link" data-scroll-target="#country">COUNTRY</a></li>
+  <li><a href="#policy" id="toc-policy" class="nav-link" data-scroll-target="#policy">POLICY</a></li>
+  <li><a href="#request-and-request_detail" id="toc-request-and-request_detail" class="nav-link" data-scroll-target="#request-and-request_detail">REQUEST and REQUEST_DETAIL</a></li>
+  <li><a href="#cyber-attack" id="toc-cyber-attack" class="nav-link" data-scroll-target="#cyber-attack">CYBER ATTACK</a></li>
+  <li><a href="#edge-list" id="toc-edge-list" class="nav-link" data-scroll-target="#edge-list">EDGE LIST</a></li>
+  </ul></li>
+  <li><a href="#database-interface" id="toc-database-interface" class="nav-link" data-scroll-target="#database-interface">Database Interface</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">6354</h1>
+<h1 class="title">6354proposal</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Xingyuan Zhao </p>
+          </div>
+  </div>
     
   
     
@@ -148,9 +174,142 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a website for EPPS6354</p>
+<section id="datebase-purpose" class="level2">
+<h2 class="anchored" data-anchor-id="datebase-purpose">Datebase Purpose</h2>
+<p>The motivation of this database is to create a database about internet censorship, cyber attacks and social network among the countries for future research usage.</p>
+<p>This database enable researchers to answer the following questions: How does the censorship rules spread across countries that share stronger relations? Why some countries are considered greater threats even though they initiate less cyber attacks? How does recent AI technology adoption affect the type of censorship and cyber attacks?</p>
+</section>
+<section id="schema" class="level2">
+<h2 class="anchored" data-anchor-id="schema">Schema</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+    COUNTRY ||--|{ POLICY: country_id
+    
+    COUNTRY ||--|{ REQUEST: country_id
+    
+    COUNTRY ||--|{ REQUEST_DETAIL: country_id
+    
+    COUNTRY ||--|{ CYBER_ATTACK: country_id
+    
+    COUNTRY ||--|{ EDGELIST: country_id
+    
+    COUNTRY {
+        string country_id PK
+        float covariates
+    }
+    
+    POLICY {
+        string url PK
+        string country_id FK
+        datetime issue_time
+        string title
+        string text
+        category document_type
+        category issuing_entity
+        category type_of_law
+        category type_of_liability
+    }
+    
+    REQUEST {
+        string country_id PK
+        datetime request_time PK
+        category reason PK
+        integer n_requests
+    }
+    
+    REQUEST_DETAIL {
+        string country_id PK
+        datetime request_time PK
+        category requestor PK
+        integer n_requests
+        integer n_items_requested
+        integer n_removed_legal
+        integer n_removed_policy
+        integer n_no_action_taken
+    }
+    
+    CYBER_ATTACK {
+        string source1 PK
+        string country_id FK
+        string victim FK
+        category type
+    }
+    
+    EDGELIST {
+        string country_id FK
+        string interaction PK
+        string interaction_strength
+    }
+    
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="methods-and-explanation" class="level2">
+<h2 class="anchored" data-anchor-id="methods-and-explanation">Methods and Explanation</h2>
+<section id="country" class="level3">
+<h3 class="anchored" data-anchor-id="country">COUNTRY</h3>
+<p>The country df contains all country level covariates. The unit is country and the country id is the primary key</p>
+</section>
+<section id="policy" class="level3">
+<h3 class="anchored" data-anchor-id="policy">POLICY</h3>
+<p>The policy df contains all policy level information from Wilmap. The unit is a piece of policy, and their unique urls serve as primary key. Country id is the foreign key here. The df also contains policy wise information such as their text and labels that are already classified.</p>
+</section>
+<section id="request-and-request_detail" class="level3">
+<h3 class="anchored" data-anchor-id="request-and-request_detail">REQUEST and REQUEST_DETAIL</h3>
+<p>The request and request detail dfs are the takedown initiations submitted by the governments to the Google platform. The request df’s unit is country-date-reason, using (country_id, request_time, reason) as primary key. The values in it are country-date level frequencies for each reasons. As for the detailed request df, it uses (country_id, request_time, requestor) as primary key, further separating the requests by the countries’ requestor agencies.</p>
+</section>
+<section id="cyber-attack" class="level3">
+<h3 class="anchored" data-anchor-id="cyber-attack">CYBER ATTACK</h3>
+<p>The cyber attack df is merged from 2 different sourced dfs that records the cyber attacks. The unit is incident and the sources’ unique url will serve as a primary key. The initiator and victim countries also uses country id as values, served as foregin keys.</p>
+</section>
+<section id="edge-list" class="level3">
+<h3 class="anchored" data-anchor-id="edge-list">EDGE LIST</h3>
+<p>The edge list is a countries pairs social network data that records the countries interactions and their relations. The unit will be a dyad of two countries, but with a country column that storage the dyad relations of such country which also conveniently served as a primary key.</p>
+</section>
+</section>
+<section id="database-interface" class="level2">
+<h2 class="anchored" data-anchor-id="database-interface">Database Interface</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+  
+
+  user[user] &lt;--&gt; network((country network))
+
+  
+  subgraph frontend [frontend]
+  events(events) --&gt; network((country network))
+  end
+  
+  network((country network)) --&gt; database[(Database)]
+  
+  subgraph backend [backend]
+  database[(Database)] --&gt; response(data response)
+  end
+
+  
+  response(data response) --&gt; events(events)
+  response(data response) --&gt; network((country network))
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
