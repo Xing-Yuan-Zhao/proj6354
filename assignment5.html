@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>proj6354 – 6354</title>
+<title>assignment5 – 6354</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +66,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -89,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -103,10 +106,6 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./assignment2.html"> 
 <span class="menu-text">Assignment 2</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./assignment5.html"> 
-<span class="menu-text">Assignment 5</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./6354proposal.html"> 
@@ -127,15 +126,32 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#an-e-r-diagram-can-be-viewed-as-a-graph.-what-do-the-following-mean-in-terms-of-the-structure-of-an-enterprise-schema" id="toc-an-e-r-diagram-can-be-viewed-as-a-graph.-what-do-the-following-mean-in-terms-of-the-structure-of-an-enterprise-schema" class="nav-link active" data-scroll-target="#an-e-r-diagram-can-be-viewed-as-a-graph.-what-do-the-following-mean-in-terms-of-the-structure-of-an-enterprise-schema">1. An E-R diagram can be viewed as a graph. What do the following mean in terms of the structure of an enterprise schema?</a>
+  <ul class="collapse">
+  <li><a href="#a-the-graph-is-disconnected." id="toc-a-the-graph-is-disconnected." class="nav-link" data-scroll-target="#a-the-graph-is-disconnected.">a) The graph is disconnected.</a></li>
+  <li><a href="#b-the-graph-has-a-cycle." id="toc-b-the-graph-has-a-cycle." class="nav-link" data-scroll-target="#b-the-graph-has-a-cycle.">b) The graph has a cycle.</a></li>
+  </ul></li>
+  <li><a href="#construct-an-e-r-diagram-for-a-hospital-with-a-set-of-patients-and-a-set-of-medical-doctors.-associate-with-each-patient-a-log-of-the-various-tests-and-examinations-conducted-hint-use-miro.com-to-draw-the-diagram-with-relationship-sets." id="toc-construct-an-e-r-diagram-for-a-hospital-with-a-set-of-patients-and-a-set-of-medical-doctors.-associate-with-each-patient-a-log-of-the-various-tests-and-examinations-conducted-hint-use-miro.com-to-draw-the-diagram-with-relationship-sets." class="nav-link" data-scroll-target="#construct-an-e-r-diagram-for-a-hospital-with-a-set-of-patients-and-a-set-of-medical-doctors.-associate-with-each-patient-a-log-of-the-various-tests-and-examinations-conducted-hint-use-miro.com-to-draw-the-diagram-with-relationship-sets.">Construct an E-R diagram for a hospital with a set of patients and a set of medical doctors. Associate with each patient a log of the various tests and examinations conducted (Hint: use miro.com to draw the diagram with relationship sets).</a></li>
+  <li><a href="#we-can-convert-any-weak-entity-set-to-a-strong-entity-set-by-simply-adding-appropriate-attributes.-why-then-do-we-have-weak-entity-sets" id="toc-we-can-convert-any-weak-entity-set-to-a-strong-entity-set-by-simply-adding-appropriate-attributes.-why-then-do-we-have-weak-entity-sets" class="nav-link" data-scroll-target="#we-can-convert-any-weak-entity-set-to-a-strong-entity-set-by-simply-adding-appropriate-attributes.-why-then-do-we-have-weak-entity-sets">3. We can convert any weak entity set to a strong entity set by simply adding appropriate attributes. Why, then, do we have weak entity sets?</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">4.</a>
+  <ul class="collapse">
+  <li><a href="#a-consider-the-employee-database-where-the-primary-keys-are-underlined.-give-an-expression-in-sql-for-each-of-the-following-queries.-hint-use-from-employee-as-e-works-as-w-company-as-c-manages-as-m" id="toc-a-consider-the-employee-database-where-the-primary-keys-are-underlined.-give-an-expression-in-sql-for-each-of-the-following-queries.-hint-use-from-employee-as-e-works-as-w-company-as-c-manages-as-m" class="nav-link" data-scroll-target="#a-consider-the-employee-database-where-the-primary-keys-are-underlined.-give-an-expression-in-sql-for-each-of-the-following-queries.-hint-use-from-employee-as-e-works-as-w-company-as-c-manages-as-m">a) Consider the employee database where the primary keys are underlined. Give an expression in SQL for each of the following queries. (Hint: use from employee as e, works as w, company as c, manages as m)</a></li>
+  <li><a href="#b-consider-the-following-sql-query-that-seeks-to-find-a-list-of-titles-of-all-courses-taught-in-spring-2017-along-with-the-name-of-the-instructor." id="toc-b-consider-the-following-sql-query-that-seeks-to-find-a-list-of-titles-of-all-courses-taught-in-spring-2017-along-with-the-name-of-the-instructor." class="nav-link" data-scroll-target="#b-consider-the-following-sql-query-that-seeks-to-find-a-list-of-titles-of-all-courses-taught-in-spring-2017-along-with-the-name-of-the-instructor.">b) Consider the following SQL query that seeks to find a list of titles of all courses taught in Spring 2017 along with the name of the instructor.</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">proj6354</h1>
+<h1 class="title">assignment5</h1>
 </div>
 
 
@@ -152,9 +168,236 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a website for EPPS6354</p>
+<section id="an-e-r-diagram-can-be-viewed-as-a-graph.-what-do-the-following-mean-in-terms-of-the-structure-of-an-enterprise-schema" class="level2">
+<h2 class="anchored" data-anchor-id="an-e-r-diagram-can-be-viewed-as-a-graph.-what-do-the-following-mean-in-terms-of-the-structure-of-an-enterprise-schema">1. An E-R diagram can be viewed as a graph. What do the following mean in terms of the structure of an enterprise schema?</h2>
+<section id="a-the-graph-is-disconnected." class="level3">
+<h3 class="anchored" data-anchor-id="a-the-graph-is-disconnected.">a) The graph is disconnected.</h3>
+<p>A disconnected graph is that at least one node is not reachable from any other nodes.</p>
+<p>Example:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Node A] --- B[Node B]
+    C[Node C]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="b-the-graph-has-a-cycle." class="level3">
+<h3 class="anchored" data-anchor-id="b-the-graph-has-a-cycle.">b) The graph has a cycle.</h3>
+<p>A cycle in a graph is that starting from one node, following a sequence of edge, it is possible to tracing back to the said node.</p>
+<p>Example:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Node A] --&gt; B[Node B]
+    B[Node B] --&gt; C[Node C]
+    C[Node C] --&gt; A[Node A]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="construct-an-e-r-diagram-for-a-hospital-with-a-set-of-patients-and-a-set-of-medical-doctors.-associate-with-each-patient-a-log-of-the-various-tests-and-examinations-conducted-hint-use-miro.com-to-draw-the-diagram-with-relationship-sets." class="level2">
+<h2 class="anchored" data-anchor-id="construct-an-e-r-diagram-for-a-hospital-with-a-set-of-patients-and-a-set-of-medical-doctors.-associate-with-each-patient-a-log-of-the-various-tests-and-examinations-conducted-hint-use-miro.com-to-draw-the-diagram-with-relationship-sets.">Construct an E-R diagram for a hospital with a set of patients and a set of medical doctors. Associate with each patient a log of the various tests and examinations conducted (Hint: use miro.com to draw the diagram with relationship sets).</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+    PATIENT {
+        int patient_id PK
+        string name
+        date date_of_birth
+    }
+    DOCTOR {
+        int doctor_id PK
+        string name
+        string specialty
+    }
+    TEST_LOG {
+        int test_id PK
+        int patient_id FK
+        int doctor_id FK
+        date test_date
+        string test_type
+        string result
+    }
+    PATIENT ||--o{ TEST_LOG : "has"
+    DOCTOR ||--o{ TEST_LOG : "conducts"
 
 
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="we-can-convert-any-weak-entity-set-to-a-strong-entity-set-by-simply-adding-appropriate-attributes.-why-then-do-we-have-weak-entity-sets" class="level2">
+<h2 class="anchored" data-anchor-id="we-can-convert-any-weak-entity-set-to-a-strong-entity-set-by-simply-adding-appropriate-attributes.-why-then-do-we-have-weak-entity-sets">3. We can convert any weak entity set to a strong entity set by simply adding appropriate attributes. Why, then, do we have weak entity sets?</h2>
+<p>A weak entity cannot be uniquely identified using only its own attributes. It needs a relationship with an owner entity to form a composite primary key and depends on that owner for its existence and identity.</p>
+<p>A strong entity has a primary key made up solely of its own attributes, which lets it be uniquely identified on its own. It does not depend on any other entity and can exist independently in the schema.</p>
+<p>Weak entity sets are used to represent real-world situations where some entities naturally depend on others for their identity, keeping the data model true to reality. They avoid the need for artificial identifiers that could hide the true relationship between entities and help maintain referential integrity through their dependent nature.</p>
+<p>Example:</p>
+<p>We can define the admission table easily with existing data.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+    PATIENT {
+        int patient_id PK
+        string name
+        date date_of_birth
+    }
+    WARD {
+        int ward_id PK
+        string ward_name
+        string location
+    }
+    ADMISSION {
+        int patient_id PK
+        int ward_id PK
+        date admission_date PK
+        date discharge_date
+        string diagnosis
+    }
+    PATIENT ||--o{ ADMISSION : "has"
+    WARD ||--o{ ADMISSION : "includes"
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>However, if we convert it into a strong set, it will create redundency.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+    PATIENT {
+        int patient_id PK
+        string name
+        date date_of_birth
+    }
+    WARD {
+        int ward_id PK
+        string ward_name
+        string location
+    }
+    ADMISSION_STRONG {
+        int admission_id PK
+        int patient_id FK
+        int ward_id FK
+        date admission_date
+        date discharge_date
+        string diagnosis
+    }
+    PATIENT ||--o{ ADMISSION_STRONG : "has"
+    WARD ||--o{ ADMISSION_STRONG : "includes"
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">4.</h2>
+<section id="a-consider-the-employee-database-where-the-primary-keys-are-underlined.-give-an-expression-in-sql-for-each-of-the-following-queries.-hint-use-from-employee-as-e-works-as-w-company-as-c-manages-as-m" class="level3">
+<h3 class="anchored" data-anchor-id="a-consider-the-employee-database-where-the-primary-keys-are-underlined.-give-an-expression-in-sql-for-each-of-the-following-queries.-hint-use-from-employee-as-e-works-as-w-company-as-c-manages-as-m">a) Consider the employee database where the primary keys are underlined. Give an expression in SQL for each of the following queries. (Hint: use from employee as e, works as w, company as c, manages as m)</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+
+
+    EMPLOYEE {
+        string ID PK
+        string person_name
+        string street
+        string city
+    }
+
+    WORKS {
+        string ID PK
+        string company_name
+        float salary
+    }
+
+    COMPANY {
+        string company_name PK
+        string city
+    }
+
+    MANAGES {
+        string ID PK
+        string manager_id
+    }
+
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="i.-find-id-and-name-of-each-employee-who-lives-in-the-same-city-as-the-location-of-the-company-for-which-the-employee-works." class="level4">
+<h4 class="anchored" data-anchor-id="i.-find-id-and-name-of-each-employee-who-lives-in-the-same-city-as-the-location-of-the-company-for-which-the-employee-works.">i. Find ID and name of each employee who lives in the same city as the location of the company for which the employee works.</h4>
+<p>SELECT e.ID, e.person_name FROM employee e JOIN works w ON e.ID = w.ID JOIN company c ON w.company_name = c.company_name WHERE e.city = c.city;</p>
+</section>
+<section id="ii.-find-id-and-name-of-each-employee-who-lives-in-the-same-city-and-on-the-same-street-as-does-her-or-his-manager." class="level4">
+<h4 class="anchored" data-anchor-id="ii.-find-id-and-name-of-each-employee-who-lives-in-the-same-city-and-on-the-same-street-as-does-her-or-his-manager.">ii. Find ID and name of each employee who lives in the same city and on the same street as does her or his manager.</h4>
+<p>SELECT e.ID, e.person_name FROM employee e JOIN manages m ON e.ID = m.ID JOIN employee mgr ON m.manager_id = mgr.ID WHERE e.city = mgr.city AND e.street = mgr.street;</p>
+</section>
+<section id="iii.-find-id-and-name-of-each-employee-who-earns-more-than-the-average-salary-of-all-employees-of-her-or-his-company." class="level4">
+<h4 class="anchored" data-anchor-id="iii.-find-id-and-name-of-each-employee-who-earns-more-than-the-average-salary-of-all-employees-of-her-or-his-company.">iii. Find ID and name of each employee who earns more than the average salary of all employees of her or his company.</h4>
+<p>SELECT e.ID, e.person_name FROM employee e JOIN works w ON e.ID = w.ID WHERE w.salary &gt; ( SELECT AVG(w2.salary) FROM works w2 WHERE w2.company_name = w.company_name );</p>
+</section>
+</section>
+<section id="b-consider-the-following-sql-query-that-seeks-to-find-a-list-of-titles-of-all-courses-taught-in-spring-2017-along-with-the-name-of-the-instructor." class="level3">
+<h3 class="anchored" data-anchor-id="b-consider-the-following-sql-query-that-seeks-to-find-a-list-of-titles-of-all-courses-taught-in-spring-2017-along-with-the-name-of-the-instructor.">b) Consider the following SQL query that seeks to find a list of titles of all courses taught in Spring 2017 along with the name of the instructor.</h3>
+<p>SELECT name, title</p>
+<p>FROM instructor natural join teaches natural join section natural join course</p>
+<p>WHERE semester = ‘Spring’ and year = 2017</p>
+<p>What is wrong with this query? (Hint: check book website)</p>
+<p>Natural join is similar to a inner join function on all common columns, causing the “FROM instructor natural join teaches natural join section natural join course” query selecting only the very few datapoints that are reoccurring in all the mentioned tables.</p>
+<p>A corrected query should be:</p>
+<p>SELECT name, title</p>
+<p>FROM instructor</p>
+<pre><code>   JOIN teaches USING (ID)
+   
+   JOIN section USING (course_id, sec_id, semester, year)
+   
+   JOIN course  USING (course_id)
+   </code></pre>
+<p>WHERE semester = ‘Spring’ AND year = 2017;</p>
+<p>In another word, the query should not use all common columns as the “on” parameter, but only use the keys that are primary key on one side and the foreign key on the other.</p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
