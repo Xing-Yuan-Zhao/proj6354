@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "proj6354",
     "section": "",
-    "text": "This is a website for EPPS6354"
+    "text": "The motivation of this database is to create a database about internet censorship, cyber attacks and social network among the countries for future research usage.\nThis database enable researchers to answer the following questions: How does the censorship rules spread across countries that share stronger relations? Why some countries are considered greater threats even though they initiate less cyber attacks? How does recent AI technology adoption affect the type of censorship and cyber attacks?"
   },
   {
     "objectID": "about.html",
@@ -110,5 +110,61 @@
     "title": "6354proposal",
     "section": "Database Interface",
     "text": "Database Interface\n\n\n\n\n\nflowchart TB\n  \n\n  user[user] &lt;--&gt; network((country network))\n\n  \n  subgraph frontend [frontend]\n  events(events) --&gt; network((country network))\n  end\n  \n  network((country network)) --&gt; database[(Database)]\n  \n  subgraph backend [backend]\n  database[(Database)] --&gt; response(data response)\n  end\n\n  \n  response(data response) --&gt; events(events)\n  response(data response) --&gt; network((country network))"
+  },
+  {
+    "objectID": "assignment5.html",
+    "href": "assignment5.html",
+    "title": "assignment5",
+    "section": "",
+    "text": "A disconnected graph is that at least one node is not reachable from any other nodes.\nExample:\n\n\n\n\n\nflowchart LR\n    A[Node A] --- B[Node B]\n    C[Node C]\n\n\n\n\n\n\n\n\n\nA cycle in a graph is that starting from one node, following a sequence of edge, it is possible to tracing back to the said node.\nExample:\n\n\n\n\n\nflowchart LR\n    A[Node A] --&gt; B[Node B]\n    B[Node B] --&gt; C[Node C]\n    C[Node C] --&gt; A[Node A]"
+  },
+  {
+    "objectID": "assignment5.html#an-e-r-diagram-can-be-viewed-as-a-graph.-what-do-the-following-mean-in-terms-of-the-structure-of-an-enterprise-schema",
+    "href": "assignment5.html#an-e-r-diagram-can-be-viewed-as-a-graph.-what-do-the-following-mean-in-terms-of-the-structure-of-an-enterprise-schema",
+    "title": "assignment5",
+    "section": "",
+    "text": "A disconnected graph is that at least one node is not reachable from any other nodes.\nExample:\n\n\n\n\n\nflowchart LR\n    A[Node A] --- B[Node B]\n    C[Node C]\n\n\n\n\n\n\n\n\n\nA cycle in a graph is that starting from one node, following a sequence of edge, it is possible to tracing back to the said node.\nExample:\n\n\n\n\n\nflowchart LR\n    A[Node A] --&gt; B[Node B]\n    B[Node B] --&gt; C[Node C]\n    C[Node C] --&gt; A[Node A]"
+  },
+  {
+    "objectID": "assignment5.html#construct-an-e-r-diagram-for-a-hospital-with-a-set-of-patients-and-a-set-of-medical-doctors.-associate-with-each-patient-a-log-of-the-various-tests-and-examinations-conducted-hint-use-miro.com-to-draw-the-diagram-with-relationship-sets.",
+    "href": "assignment5.html#construct-an-e-r-diagram-for-a-hospital-with-a-set-of-patients-and-a-set-of-medical-doctors.-associate-with-each-patient-a-log-of-the-various-tests-and-examinations-conducted-hint-use-miro.com-to-draw-the-diagram-with-relationship-sets.",
+    "title": "assignment5",
+    "section": "Construct an E-R diagram for a hospital with a set of patients and a set of medical doctors. Associate with each patient a log of the various tests and examinations conducted (Hint: use miro.com to draw the diagram with relationship sets).",
+    "text": "Construct an E-R diagram for a hospital with a set of patients and a set of medical doctors. Associate with each patient a log of the various tests and examinations conducted (Hint: use miro.com to draw the diagram with relationship sets).\n\n\n\n\n\nerDiagram\n    PATIENT {\n        int patient_id PK\n        string name\n        date date_of_birth\n    }\n    DOCTOR {\n        int doctor_id PK\n        string name\n        string specialty\n    }\n    TEST_LOG {\n        int test_id PK\n        int patient_id FK\n        int doctor_id FK\n        date test_date\n        string test_type\n        string result\n    }\n    PATIENT ||--o{ TEST_LOG : \"has\"\n    DOCTOR ||--o{ TEST_LOG : \"conducts\""
+  },
+  {
+    "objectID": "assignment5.html#we-can-convert-any-weak-entity-set-to-a-strong-entity-set-by-simply-adding-appropriate-attributes.-why-then-do-we-have-weak-entity-sets",
+    "href": "assignment5.html#we-can-convert-any-weak-entity-set-to-a-strong-entity-set-by-simply-adding-appropriate-attributes.-why-then-do-we-have-weak-entity-sets",
+    "title": "assignment5",
+    "section": "3. We can convert any weak entity set to a strong entity set by simply adding appropriate attributes. Why, then, do we have weak entity sets?",
+    "text": "3. We can convert any weak entity set to a strong entity set by simply adding appropriate attributes. Why, then, do we have weak entity sets?\nA weak entity cannot be uniquely identified using only its own attributes. It needs a relationship with an owner entity to form a composite primary key and depends on that owner for its existence and identity.\nA strong entity has a primary key made up solely of its own attributes, which lets it be uniquely identified on its own. It does not depend on any other entity and can exist independently in the schema.\nWeak entity sets are used to represent real-world situations where some entities naturally depend on others for their identity, keeping the data model true to reality. They avoid the need for artificial identifiers that could hide the true relationship between entities and help maintain referential integrity through their dependent nature.\nExample:\nWe can define the admission table easily with existing data.\n\n\n\n\n\nerDiagram\n    PATIENT {\n        int patient_id PK\n        string name\n        date date_of_birth\n    }\n    WARD {\n        int ward_id PK\n        string ward_name\n        string location\n    }\n    ADMISSION {\n        int patient_id PK\n        int ward_id PK\n        date admission_date PK\n        date discharge_date\n        string diagnosis\n    }\n    PATIENT ||--o{ ADMISSION : \"has\"\n    WARD ||--o{ ADMISSION : \"includes\"\n\n\n\n\n\n\n\nHowever, if we convert it into a strong set, it will create redundency.\n\n\n\n\n\nerDiagram\n    PATIENT {\n        int patient_id PK\n        string name\n        date date_of_birth\n    }\n    WARD {\n        int ward_id PK\n        string ward_name\n        string location\n    }\n    ADMISSION_STRONG {\n        int admission_id PK\n        int patient_id FK\n        int ward_id FK\n        date admission_date\n        date discharge_date\n        string diagnosis\n    }\n    PATIENT ||--o{ ADMISSION_STRONG : \"has\"\n    WARD ||--o{ ADMISSION_STRONG : \"includes\""
+  },
+  {
+    "objectID": "assignment5.html#section",
+    "href": "assignment5.html#section",
+    "title": "assignment5",
+    "section": "4.",
+    "text": "4.\n\na) Consider the employee database where the primary keys are underlined. Give an expression in SQL for each of the following queries. (Hint: use from employee as e, works as w, company as c, manages as m)\n\n\n\n\n\nerDiagram\n\n\n    EMPLOYEE {\n        string ID PK\n        string person_name\n        string street\n        string city\n    }\n\n    WORKS {\n        string ID PK\n        string company_name\n        float salary\n    }\n\n    COMPANY {\n        string company_name PK\n        string city\n    }\n\n    MANAGES {\n        string ID PK\n        string manager_id\n    }\n\n\n\n\n\n\n\n\n\ni. Find ID and name of each employee who lives in the same city as the location of the company for which the employee works.\nSELECT e.ID, e.person_name FROM employee e JOIN works w ON e.ID = w.ID JOIN company c ON w.company_name = c.company_name WHERE e.city = c.city;\n\n\nii. Find ID and name of each employee who lives in the same city and on the same street as does her or his manager.\nSELECT e.ID, e.person_name FROM employee e JOIN manages m ON e.ID = m.ID JOIN employee mgr ON m.manager_id = mgr.ID WHERE e.city = mgr.city AND e.street = mgr.street;\n\n\niii. Find ID and name of each employee who earns more than the average salary of all employees of her or his company.\nSELECT e.ID, e.person_name FROM employee e JOIN works w ON e.ID = w.ID WHERE w.salary &gt; ( SELECT AVG(w2.salary) FROM works w2 WHERE w2.company_name = w.company_name );\n\n\n\nb) Consider the following SQL query that seeks to find a list of titles of all courses taught in Spring 2017 along with the name of the instructor.\nSELECT name, title\nFROM instructor natural join teaches natural join section natural join course\nWHERE semester = ‘Spring’ and year = 2017\nWhat is wrong with this query? (Hint: check book website)\nNatural join is similar to a inner join function on all common columns, causing the “FROM instructor natural join teaches natural join section natural join course” query selecting only the very few datapoints that are reoccurring in all the mentioned tables.\nA corrected query should be:\nSELECT name, title\nFROM instructor\n   JOIN teaches USING (ID)\n   \n   JOIN section USING (course_id, sec_id, semester, year)\n   \n   JOIN course  USING (course_id)\n   \nWHERE semester = ‘Spring’ AND year = 2017;\nIn another word, the query should not use all common columns as the “on” parameter, but only use the keys that are primary key on one side and the foreign key on the other."
+  },
+  {
+    "objectID": "index.html#datebase-purpose",
+    "href": "index.html#datebase-purpose",
+    "title": "proj6354",
+    "section": "",
+    "text": "The motivation of this database is to create a database about internet censorship, cyber attacks and social network among the countries for future research usage.\nThis database enable researchers to answer the following questions: How does the censorship rules spread across countries that share stronger relations? Why some countries are considered greater threats even though they initiate less cyber attacks? How does recent AI technology adoption affect the type of censorship and cyber attacks?"
+  },
+  {
+    "objectID": "index.html#schema",
+    "href": "index.html#schema",
+    "title": "proj6354",
+    "section": "Schema",
+    "text": "Schema\n\n\n\n\n\nerDiagram\n    COUNTRY            ||--|{ POLICY            : country\n    COUNTRY            ||--|{ REQUEST           : country\n    COUNTRY            ||--|{ OPERATION_SPONSOR : country\n    OPERATION          ||--|{ OPERATION_SPONSOR : incident_key\n\n    COUNTRY {\n        string country         PK\n        string country_id\n        string region\n        string CT\n        string edition\n        string status\n        float  Political_Rights\n        float  Civil_Rights\n        int    total\n    }\n\n    REQUEST {\n        serial request_record_id PK\n        string country           FK\n        text   period_ending\n        text   agency\n        int    num_requests\n        int    items_requested\n        float  perc_removed_legal\n        float  perc_removed_policy\n        float  perc_content_not_found\n        float  perc_not_enough_information\n        float  perc_no_action_taken\n        float  perc_content_already_removed\n    }\n\n    POLICY {\n        string policy_id       PK\n        string url\n        string country         FK\n        string region\n        string year\n        string time\n        string date_updated\n        string title\n        string sub_title\n        string text\n        string hrefs\n        string document_type\n        string topic_claim_defense\n        string issuing_entity\n        string issues_addressed\n        string service_provider_type\n        string osp_obligation\n    }\n\n    OPERATION {\n        int    incident_key      PK\n        string title\n        string date\n        string affiliations\n        string description\n        string response\n        string victims\n        string type\n        string category\n        string sources_1\n        string sources_2\n        string sources_3\n    }\n\n    OPERATION_SPONSOR {\n        int    incident_key      FK\n        string country           FK\n    }"
+  },
+  {
+    "objectID": "index.html#database-interface",
+    "href": "index.html#database-interface",
+    "title": "proj6354",
+    "section": "Database Interface",
+    "text": "Database Interface\n\n\n\n\n\nflowchart TB\n  \n\n  user[user] &lt;--&gt; network((Interactive UI))\n\n  \n  subgraph frontend [frontend]\n  events(events) --&gt; network((Interactive UI))\n  end\n  \n  network((Interactive UI)) --&gt; database[(Database)]\n  \n  subgraph backend [backend]\n  database[(Database)] --&gt; response(data response)\n  end\n\n  \n  response(data response) --&gt; events(events)\n  response(data response) --&gt; network((Interactive UI))\n  \n  classDef frontend fill:#f0f8ff,stroke:#a9a9a9,stroke-width:1px\n  classDef backend  fill:#f5f5f5,stroke:#a9a9a9,stroke-width:1px\n\n  class frontend frontend\n  class backend backend"
   }
 ]

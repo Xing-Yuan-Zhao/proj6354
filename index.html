@@ -66,6 +66,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -138,8 +141,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#datebase-purpose" id="toc-datebase-purpose" class="nav-link active" data-scroll-target="#datebase-purpose">Datebase Purpose</a></li>
+  <li><a href="#schema" id="toc-schema" class="nav-link" data-scroll-target="#schema">Schema</a></li>
+  <li><a href="#database-interface" id="toc-database-interface" class="nav-link" data-scroll-target="#database-interface">Database Interface</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -163,9 +174,141 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a website for EPPS6354</p>
+<section id="datebase-purpose" class="level2">
+<h2 class="anchored" data-anchor-id="datebase-purpose">Datebase Purpose</h2>
+<p>The motivation of this database is to create a database about internet censorship, cyber attacks and social network among the countries for future research usage.</p>
+<p>This database enable researchers to answer the following questions: How does the censorship rules spread across countries that share stronger relations? Why some countries are considered greater threats even though they initiate less cyber attacks? How does recent AI technology adoption affect the type of censorship and cyber attacks?</p>
+</section>
+<section id="schema" class="level2">
+<h2 class="anchored" data-anchor-id="schema">Schema</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+    COUNTRY            ||--|{ POLICY            : country
+    COUNTRY            ||--|{ REQUEST           : country
+    COUNTRY            ||--|{ OPERATION_SPONSOR : country
+    OPERATION          ||--|{ OPERATION_SPONSOR : incident_key
+
+    COUNTRY {
+        string country         PK
+        string country_id
+        string region
+        string CT
+        string edition
+        string status
+        float  Political_Rights
+        float  Civil_Rights
+        int    total
+    }
+
+    REQUEST {
+        serial request_record_id PK
+        string country           FK
+        text   period_ending
+        text   agency
+        int    num_requests
+        int    items_requested
+        float  perc_removed_legal
+        float  perc_removed_policy
+        float  perc_content_not_found
+        float  perc_not_enough_information
+        float  perc_no_action_taken
+        float  perc_content_already_removed
+    }
+
+    POLICY {
+        string policy_id       PK
+        string url
+        string country         FK
+        string region
+        string year
+        string time
+        string date_updated
+        string title
+        string sub_title
+        string text
+        string hrefs
+        string document_type
+        string topic_claim_defense
+        string issuing_entity
+        string issues_addressed
+        string service_provider_type
+        string osp_obligation
+    }
+
+    OPERATION {
+        int    incident_key      PK
+        string title
+        string date
+        string affiliations
+        string description
+        string response
+        string victims
+        string type
+        string category
+        string sources_1
+        string sources_2
+        string sources_3
+    }
+
+    OPERATION_SPONSOR {
+        int    incident_key      FK
+        string country           FK
+    }
 
 
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="database-interface" class="level2">
+<h2 class="anchored" data-anchor-id="database-interface">Database Interface</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+  
+
+  user[user] &lt;--&gt; network((Interactive UI))
+
+  
+  subgraph frontend [frontend]
+  events(events) --&gt; network((Interactive UI))
+  end
+  
+  network((Interactive UI)) --&gt; database[(Database)]
+  
+  subgraph backend [backend]
+  database[(Database)] --&gt; response(data response)
+  end
+
+  
+  response(data response) --&gt; events(events)
+  response(data response) --&gt; network((Interactive UI))
+  
+  classDef frontend fill:#f0f8ff,stroke:#a9a9a9,stroke-width:1px
+  classDef backend  fill:#f5f5f5,stroke:#a9a9a9,stroke-width:1px
+
+  class frontend frontend
+  class backend backend
+  
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
