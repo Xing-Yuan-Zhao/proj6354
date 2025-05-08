@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>assignment1 – 6354</title>
+<title>assignment3 – 6354</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,16 +114,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Assignment 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./assignment4.html">
- <span class="dropdown-text">Assignment 4</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="./assignment5.html">
  <span class="dropdown-text">Assignment 5</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./assignment6.html">
- <span class="dropdown-text">Assignment 6</span></a>
   </li>  
     </ul>
   </li>
@@ -155,12 +147,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2.</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3.</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4.</a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">5.</a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">6.</a></li>
+  <li><a href="#open-the-online-sql-interpreter-httpswww.db-book.comuniversity-lab-dirsqljs.html" id="toc-open-the-online-sql-interpreter-httpswww.db-book.comuniversity-lab-dirsqljs.html" class="nav-link active" data-scroll-target="#open-the-online-sql-interpreter-httpswww.db-book.comuniversity-lab-dirsqljs.html">1. Open the Online SQL interpreter (https://www.db-book.com/university-lab-dir/sqljs.html)</a></li>
+  <li><a href="#write-sql-codes-to-get-a-list-of" id="toc-write-sql-codes-to-get-a-list-of" class="nav-link" data-scroll-target="#write-sql-codes-to-get-a-list-of">2. Write SQL codes to get a list of:</a>
+  <ul class="collapse">
+  <li><a href="#i.-students-ids-hint-from-the-takes-relation" id="toc-i.-students-ids-hint-from-the-takes-relation" class="nav-link" data-scroll-target="#i.-students-ids-hint-from-the-takes-relation">i. Students IDs (hint: from the takes relation)</a></li>
+  <li><a href="#ii.-instructors" id="toc-ii.-instructors" class="nav-link" data-scroll-target="#ii.-instructors">ii. Instructors</a></li>
+  <li><a href="#iii.-departments" id="toc-iii.-departments" class="nav-link" data-scroll-target="#iii.-departments">iii. Departments</a></li>
+  </ul></li>
+  <li><a href="#write-in-sql-codes-to-do-following-queries" id="toc-write-in-sql-codes-to-do-following-queries" class="nav-link" data-scroll-target="#write-in-sql-codes-to-do-following-queries">3. Write in SQL codes to do following queries:</a>
+  <ul class="collapse">
+  <li><a href="#i.-find-the-id-and-name-of-each-student-who-has-taken-at-least-one-comp.-sci.-course-make-sure-there-are-no-duplicate-names-in-the-result." id="toc-i.-find-the-id-and-name-of-each-student-who-has-taken-at-least-one-comp.-sci.-course-make-sure-there-are-no-duplicate-names-in-the-result." class="nav-link" data-scroll-target="#i.-find-the-id-and-name-of-each-student-who-has-taken-at-least-one-comp.-sci.-course-make-sure-there-are-no-duplicate-names-in-the-result.">i. Find the ID and name of each student who has taken at least one Comp. Sci. course; make sure there are no duplicate names in the result.</a></li>
+  <li><a href="#ii.-add-grades-to-the-list" id="toc-ii.-add-grades-to-the-list" class="nav-link" data-scroll-target="#ii.-add-grades-to-the-list">ii. Add grades to the list</a></li>
+  <li><a href="#iii.-find-the-id-and-name-of-each-student-who-has-not-taken-any-course-offered-before-2017." id="toc-iii.-find-the-id-and-name-of-each-student-who-has-not-taken-any-course-offered-before-2017." class="nav-link" data-scroll-target="#iii.-find-the-id-and-name-of-each-student-who-has-not-taken-any-course-offered-before-2017.">iii. Find the ID and name of each student who has not taken any course offered before 2017.</a></li>
+  <li><a href="#iv.-for-each-department-find-the-maximum-salary-of-instructors-in-that-department.-you-may-assume-that-every-department-has-at-least-one-instructor." id="toc-iv.-for-each-department-find-the-maximum-salary-of-instructors-in-that-department.-you-may-assume-that-every-department-has-at-least-one-instructor." class="nav-link" data-scroll-target="#iv.-for-each-department-find-the-maximum-salary-of-instructors-in-that-department.-you-may-assume-that-every-department-has-at-least-one-instructor.">iv. For each department, find the maximum salary of instructors in that department. You may assume that every department has at least one instructor.</a></li>
+  <li><a href="#v.-find-the-lowest-across-all-departments-of-the-per-department-maximum-salary-computed-by-the-preceding-query." id="toc-v.-find-the-lowest-across-all-departments-of-the-per-department-maximum-salary-computed-by-the-preceding-query." class="nav-link" data-scroll-target="#v.-find-the-lowest-across-all-departments-of-the-per-department-maximum-salary-computed-by-the-preceding-query.">v. Find the lowest, across all departments, of the per-department maximum salary computed by the preceding query.</a></li>
+  <li><a href="#vi.-add-names-to-the-list" id="toc-vi.-add-names-to-the-list" class="nav-link" data-scroll-target="#vi.-add-names-to-the-list">vi. Add names to the list</a></li>
+  </ul></li>
+  <li><a href="#find-instructor-with-name-and-id-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.-instructors-who-have-never-taught-a-course-trivially-satisfy-this-condition.." id="toc-find-instructor-with-name-and-id-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.-instructors-who-have-never-taught-a-course-trivially-satisfy-this-condition.." class="nav-link" data-scroll-target="#find-instructor-with-name-and-id-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.-instructors-who-have-never-taught-a-course-trivially-satisfy-this-condition..">4. Find instructor (with name and ID) who has never given an A grade in any course she or he has taught. (Instructors who have never taught a course trivially satisfy this condition.).</a></li>
+  <li><a href="#write-sql-query-to-find-the-number-of-students-in-each-section.-the-result-columns-should-appear-in-the-order-courseid-secid-year-semester-num.-you-do-not-need-to-output-sections-with-0-students." id="toc-write-sql-query-to-find-the-number-of-students-in-each-section.-the-result-columns-should-appear-in-the-order-courseid-secid-year-semester-num.-you-do-not-need-to-output-sections-with-0-students." class="nav-link" data-scroll-target="#write-sql-query-to-find-the-number-of-students-in-each-section.-the-result-columns-should-appear-in-the-order-courseid-secid-year-semester-num.-you-do-not-need-to-output-sections-with-0-students.">5. Write SQL query to find the number of students in each section. The result columns should appear in the order “courseid, secid, year, semester, num”. You do not need to output sections with 0 students.</a></li>
   </ul>
 </nav>
     </div>
@@ -169,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">assignment1</h1>
+<h1 class="title">assignment3</h1>
 </div>
 
 
@@ -186,59 +190,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section">1.</h3>
-<p>Social media platforms that storage user information and link them with user generated contents information.</p>
-<p>Online shopping system that links user information, purchase orders, merchandise infomration and merchants.</p>
-<p>Foreign exchange platforms that links trading pairs information, position information and user information.</p>
+<section id="open-the-online-sql-interpreter-httpswww.db-book.comuniversity-lab-dirsqljs.html" class="level2">
+<h2 class="anchored" data-anchor-id="open-the-online-sql-interpreter-httpswww.db-book.comuniversity-lab-dirsqljs.html">1. Open the Online SQL interpreter (https://www.db-book.com/university-lab-dir/sqljs.html)</h2>
 </section>
-<section id="section-1" class="level3">
-<h3 class="anchored" data-anchor-id="section-1">2.</h3>
-<p>We can propose the following applications in many fields:</p>
-<ol type="1">
-<li>A relational database that contains countries data and conflict event data for political science research.</li>
-</ol>
-<ol type="i">
-<li><p>The purpose is to understand the conflict and countries in an interactive manner, rather than using conflict event data or country wise data alone.</p></li>
-<li><p>In the country dataset, the unit will be country, and the country codes will be the key, with demographic, economic and other related data as values. In the conflict dataset, the unit will be the conflicts, with related duration, casualties, cause etc, in which country code will serve as a foreign key that links the country dataset.</p></li>
-<li><p>The interface should be on a world map, with conflicts on it.</p></li>
-</ol>
-<ol start="2" type="1">
-<li>A relational database that contains regions data and criminal activity data for criminology research.</li>
-</ol>
-<ol type="i">
-<li><p>The purpose is to get a relational data of the crime rates and regions for relative researchs.</p></li>
-<li><p>In the region dataset, there should be zip codes as the primary key, with demographic, economic and other related data as values. In the criminal activity dataset, the case number should be the key, with region zip code as foreign key and the case information as the values.</p></li>
-<li><p>The interface can be a map with criminal activity shown on it.</p></li>
-</ol>
-<ol start="3" type="1">
-<li>A relational database that links public companies, countries and regulation legislation activities can be established.</li>
-</ol>
-<ol type="i">
-<li><p>This database can contain information for public companies, countries and laws so that researchers can have a better understanding between regulation and company behaviors.</p></li>
-<li><p>In the country dataset, the unit will be country, and the country codes will be the key, with demographic, economic and other related data as values. In the company dataset, the unit will be company with their unique stock code as key and other information as value, with country as foreign key. In the legislation activity dataset, the unit would be a proposition of a bill, and the bill information will be the values with country being foregin key.</p></li>
-<li><p>The interface can be a world map.</p></li>
-</ol>
+<section id="write-sql-codes-to-get-a-list-of" class="level2">
+<h2 class="anchored" data-anchor-id="write-sql-codes-to-get-a-list-of">2. Write SQL codes to get a list of:</h2>
+<section id="i.-students-ids-hint-from-the-takes-relation" class="level3">
+<h3 class="anchored" data-anchor-id="i.-students-ids-hint-from-the-takes-relation">i. Students IDs (hint: from the takes relation)</h3>
+<p>SELECT DISTINCT ID FROM takes;</p>
 </section>
-<section id="section-2" class="level3">
-<h3 class="anchored" data-anchor-id="section-2">3.</h3>
-<p>It is more than just retrieving, but also extracting insights and make further usage of the data.</p>
+<section id="ii.-instructors" class="level3">
+<h3 class="anchored" data-anchor-id="ii.-instructors">ii. Instructors</h3>
+<p>SELECT ID, name FROM instructor;</p>
 </section>
-<section id="section-3" class="level3">
-<h3 class="anchored" data-anchor-id="section-3">4.</h3>
-<p>There were a emergence of large quantity of unstructured data. The growing online business need to deal with that, so there is a need for such system.</p>
+<section id="iii.-departments" class="level3">
+<h3 class="anchored" data-anchor-id="iii.-departments">iii. Departments</h3>
+<p>SELECT dept_name FROM department;</p>
 </section>
-<section id="section-4" class="level3">
-<h3 class="anchored" data-anchor-id="section-4">5.</h3>
-<p>The current database may requires predetermined template, making dynamic alteration of data a hard task.</p>
 </section>
-<section id="section-5" class="level3">
-<h3 class="anchored" data-anchor-id="section-5">6.</h3>
-<ol type="1">
-<li><p>User data with unique user ID and other related information such as nickname, contact information etc as values;</p></li>
-<li><p>Post data with unique post ID and title, content and timestamp as values and user ID as a foreign key;</p></li>
-<li><p>Community data that contains posts and users. The community link can be key and posts and member users are values, linked with post ID and user ID.</p></li>
-</ol>
+<section id="write-in-sql-codes-to-do-following-queries" class="level2">
+<h2 class="anchored" data-anchor-id="write-in-sql-codes-to-do-following-queries">3. Write in SQL codes to do following queries:</h2>
+<section id="i.-find-the-id-and-name-of-each-student-who-has-taken-at-least-one-comp.-sci.-course-make-sure-there-are-no-duplicate-names-in-the-result." class="level3">
+<h3 class="anchored" data-anchor-id="i.-find-the-id-and-name-of-each-student-who-has-taken-at-least-one-comp.-sci.-course-make-sure-there-are-no-duplicate-names-in-the-result.">i. Find the ID and name of each student who has taken at least one Comp. Sci. course; make sure there are no duplicate names in the result.</h3>
+<p>SELECT DISTINCT s.ID, s.name FROM student AS s JOIN takes AS t ON s.ID = t.ID JOIN course AS c ON t.course_id = c.course_id WHERE c.dept_name = ‘Comp. Sci.’;</p>
+</section>
+<section id="ii.-add-grades-to-the-list" class="level3">
+<h3 class="anchored" data-anchor-id="ii.-add-grades-to-the-list">ii. Add grades to the list</h3>
+<p>SELECT DISTINCT s.ID, s.name, t.grade FROM student AS s JOIN takes AS t ON s.ID = t.ID JOIN course AS c ON t.course_id = c.course_id WHERE c.dept_name = ‘Comp. Sci.’;</p>
+</section>
+<section id="iii.-find-the-id-and-name-of-each-student-who-has-not-taken-any-course-offered-before-2017." class="level3">
+<h3 class="anchored" data-anchor-id="iii.-find-the-id-and-name-of-each-student-who-has-not-taken-any-course-offered-before-2017.">iii. Find the ID and name of each student who has not taken any course offered before 2017.</h3>
+<p>SELECT s.ID, s.name FROM student AS s WHERE NOT EXISTS ( SELECT 1 FROM takes AS t WHERE t.ID = s.ID AND t.year &lt; 2017 );</p>
+</section>
+<section id="iv.-for-each-department-find-the-maximum-salary-of-instructors-in-that-department.-you-may-assume-that-every-department-has-at-least-one-instructor." class="level3">
+<h3 class="anchored" data-anchor-id="iv.-for-each-department-find-the-maximum-salary-of-instructors-in-that-department.-you-may-assume-that-every-department-has-at-least-one-instructor.">iv. For each department, find the maximum salary of instructors in that department. You may assume that every department has at least one instructor.</h3>
+<p>SELECT dept_name, MAX(salary) AS max_salary FROM instructor GROUP BY dept_name;</p>
+</section>
+<section id="v.-find-the-lowest-across-all-departments-of-the-per-department-maximum-salary-computed-by-the-preceding-query." class="level3">
+<h3 class="anchored" data-anchor-id="v.-find-the-lowest-across-all-departments-of-the-per-department-maximum-salary-computed-by-the-preceding-query.">v. Find the lowest, across all departments, of the per-department maximum salary computed by the preceding query.</h3>
+<p>WITH dept_max AS ( SELECT dept_name, MAX(salary) AS max_salary FROM instructor GROUP BY dept_name ) SELECT MIN(max_salary) AS lowest_max_salary FROM dept_max;</p>
+</section>
+<section id="vi.-add-names-to-the-list" class="level3">
+<h3 class="anchored" data-anchor-id="vi.-add-names-to-the-list">vi. Add names to the list</h3>
+<p>WITH dept_max AS ( SELECT dept_name, MAX(salary) AS max_salary FROM instructor GROUP BY dept_name ), lowest AS ( SELECT MIN(max_salary) AS lowest_max_salary FROM dept_max ) SELECT i.ID, i.name, i.dept_name, i.salary FROM instructor AS i JOIN dept_max AS dm ON i.dept_name = dm.dept_name AND i.salary = dm.max_salary JOIN lowest AS l ON dm.max_salary = l.lowest_max_salary;</p>
+</section>
+</section>
+<section id="find-instructor-with-name-and-id-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.-instructors-who-have-never-taught-a-course-trivially-satisfy-this-condition.." class="level2">
+<h2 class="anchored" data-anchor-id="find-instructor-with-name-and-id-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.-instructors-who-have-never-taught-a-course-trivially-satisfy-this-condition..">4. Find instructor (with name and ID) who has never given an A grade in any course she or he has taught. (Instructors who have never taught a course trivially satisfy this condition.).</h2>
+<p>SELECT i.ID, i.name FROM instructor AS i WHERE NOT EXISTS ( SELECT 1 FROM teaches AS t JOIN takes AS k ON t.course_id = k.course_id AND t.sec_id = k.sec_id AND t.semester = k.semester AND t.year = k.year WHERE t.ID = i.ID AND k.grade = ‘A’ );</p>
+</section>
+<section id="write-sql-query-to-find-the-number-of-students-in-each-section.-the-result-columns-should-appear-in-the-order-courseid-secid-year-semester-num.-you-do-not-need-to-output-sections-with-0-students." class="level2">
+<h2 class="anchored" data-anchor-id="write-sql-query-to-find-the-number-of-students-in-each-section.-the-result-columns-should-appear-in-the-order-courseid-secid-year-semester-num.-you-do-not-need-to-output-sections-with-0-students.">5. Write SQL query to find the number of students in each section. The result columns should appear in the order “courseid, secid, year, semester, num”. You do not need to output sections with 0 students.</h2>
+<p>SELECT course_id, sec_id, year, semester, COUNT(*) AS num FROM takes GROUP BY course_id, sec_id, year, semester;</p>
 
 
 </section>

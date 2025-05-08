@@ -166,5 +166,103 @@
     "title": "proj6354",
     "section": "Database Interface",
     "text": "Database Interface\n\n\n\n\n\nflowchart TB\n  \n\n  user[user] &lt;--&gt; network((Interactive UI))\n\n  \n  subgraph frontend [frontend]\n  events(events) --&gt; network((Interactive UI))\n  end\n  \n  network((Interactive UI)) --&gt; database[(Database)]\n  \n  subgraph backend [backend]\n  database[(Database)] --&gt; response(data response)\n  end\n\n  \n  response(data response) --&gt; events(events)\n  response(data response) --&gt; network((Interactive UI))\n  \n  classDef frontend fill:#f0f8ff,stroke:#a9a9a9,stroke-width:1px\n  classDef backend  fill:#f5f5f5,stroke:#a9a9a9,stroke-width:1px\n\n  class frontend frontend\n  class backend backend"
+  },
+  {
+    "objectID": "assignment3.html#write-sql-codes-to-get-a-list-of",
+    "href": "assignment3.html#write-sql-codes-to-get-a-list-of",
+    "title": "assignment3",
+    "section": "2. Write SQL codes to get a list of:",
+    "text": "2. Write SQL codes to get a list of:\n\ni. Students IDs (hint: from the takes relation)\nSELECT DISTINCT ID FROM takes;\n\n\nii. Instructors\nSELECT ID, name FROM instructor;\n\n\niii. Departments\nSELECT dept_name FROM department;"
+  },
+  {
+    "objectID": "assignment3.html#write-in-sql-codes-to-do-following-queries",
+    "href": "assignment3.html#write-in-sql-codes-to-do-following-queries",
+    "title": "assignment3",
+    "section": "3. Write in SQL codes to do following queries:",
+    "text": "3. Write in SQL codes to do following queries:\n\ni. Find the ID and name of each student who has taken at least one Comp. Sci. course; make sure there are no duplicate names in the result.\nSELECT DISTINCT s.ID, s.name FROM student AS s JOIN takes AS t ON s.ID = t.ID JOIN course AS c ON t.course_id = c.course_id WHERE c.dept_name = ‘Comp. Sci.’;\n\n\nii. Add grades to the list\nSELECT DISTINCT s.ID, s.name, t.grade FROM student AS s JOIN takes AS t ON s.ID = t.ID JOIN course AS c ON t.course_id = c.course_id WHERE c.dept_name = ‘Comp. Sci.’;\n\n\niii. Find the ID and name of each student who has not taken any course offered before 2017.\nSELECT s.ID, s.name FROM student AS s WHERE NOT EXISTS ( SELECT 1 FROM takes AS t WHERE t.ID = s.ID AND t.year &lt; 2017 );\n\n\niv. For each department, find the maximum salary of instructors in that department. You may assume that every department has at least one instructor.\nSELECT dept_name, MAX(salary) AS max_salary FROM instructor GROUP BY dept_name;\n\n\nv. Find the lowest, across all departments, of the per-department maximum salary computed by the preceding query.\nWITH dept_max AS ( SELECT dept_name, MAX(salary) AS max_salary FROM instructor GROUP BY dept_name ) SELECT MIN(max_salary) AS lowest_max_salary FROM dept_max;\n\n\nvi. Add names to the list\nWITH dept_max AS ( SELECT dept_name, MAX(salary) AS max_salary FROM instructor GROUP BY dept_name ), lowest AS ( SELECT MIN(max_salary) AS lowest_max_salary FROM dept_max ) SELECT i.ID, i.name, i.dept_name, i.salary FROM instructor AS i JOIN dept_max AS dm ON i.dept_name = dm.dept_name AND i.salary = dm.max_salary JOIN lowest AS l ON dm.max_salary = l.lowest_max_salary;"
+  },
+  {
+    "objectID": "assignment3.html#find-instructor-with-name-and-id-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.-instructors-who-have-never-taught-a-course-trivially-satisfy-this-condition..",
+    "href": "assignment3.html#find-instructor-with-name-and-id-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.-instructors-who-have-never-taught-a-course-trivially-satisfy-this-condition..",
+    "title": "assignment3",
+    "section": "4. Find instructor (with name and ID) who has never given an A grade in any course she or he has taught. (Instructors who have never taught a course trivially satisfy this condition.).",
+    "text": "4. Find instructor (with name and ID) who has never given an A grade in any course she or he has taught. (Instructors who have never taught a course trivially satisfy this condition.).\nSELECT i.ID, i.name FROM instructor AS i WHERE NOT EXISTS ( SELECT 1 FROM teaches AS t JOIN takes AS k ON t.course_id = k.course_id AND t.sec_id = k.sec_id AND t.semester = k.semester AND t.year = k.year WHERE t.ID = i.ID AND k.grade = ‘A’ );"
+  },
+  {
+    "objectID": "assignment3.html#write-sql-query-to-find-the-number-of-students-in-each-section.-the-result-columns-should-appear-in-the-order-courseid-secid-year-semester-num.-you-do-not-need-to-output-sections-with-0-students.",
+    "href": "assignment3.html#write-sql-query-to-find-the-number-of-students-in-each-section.-the-result-columns-should-appear-in-the-order-courseid-secid-year-semester-num.-you-do-not-need-to-output-sections-with-0-students.",
+    "title": "assignment3",
+    "section": "5. Write SQL query to find the number of students in each section. The result columns should appear in the order “courseid, secid, year, semester, num”. You do not need to output sections with 0 students.",
+    "text": "5. Write SQL query to find the number of students in each section. The result columns should appear in the order “courseid, secid, year, semester, num”. You do not need to output sections with 0 students.\nSELECT course_id, sec_id, year, semester, COUNT(*) AS num FROM takes GROUP BY course_id, sec_id, year, semester;"
+  },
+  {
+    "objectID": "assignment4.html#section",
+    "href": "assignment4.html#section",
+    "title": "assignment4",
+    "section": "1",
+    "text": "1\nA strong entity set has a full primary key of its own, whereas a weak entity set lacks a standalone key and must combine its keys with its owner’s primary key via an identifying relationship to achieve uniqueness .\nFor example, in an order system, PurchaseOrder is a strong entity keyed by orderID, while LineItem is weak and is uniquely identified only by the combination of orderID and lineNumber."
+  },
+  {
+    "objectID": "assignment4.html#a",
+    "href": "assignment4.html#a",
+    "title": "assignment4",
+    "section": "2.a",
+    "text": "2.a\n\n\n\n\n\nerDiagram\n    MATCH             ||--o{ SCORE           : has\n    MATCH             ||--o{ PLAYER_STATS    : has\n    PLAYER            ||--o{ PLAYER_STATS    : has\n    MATCH {\n        int matchID PK\n        date matchDate\n        &lt;&lt;derived&gt;&gt; int totalTeamGoals\n    }\n    PLAYER {\n        int playerID PK\n        string name\n        &lt;&lt;derived&gt;&gt; int totalGoals\n    }\n    SCORE {\n        int matchID FK\n        int teamScore\n        int opponentScore\n    }\n    PLAYER_STATS {\n        int matchID FK\n        int playerID FK\n        int goals\n        int assists\n        int minutesPlayed\n    }\n\n\n\n\n\n\n\n\n\n\n\n\n\nerDiagram\n    TEAM              ||--o{ MATCH           \n    MATCH             ||--o{ SCORE           \n    MATCH             ||--o{ PLAYER_STATS    \n    PLAYER            ||--o{ PLAYER_STATS    \n    TEAM {\n        int teamID PK\n        string teamName\n    }\n    MATCH {\n        int matchID PK\n        date matchDate\n        int homeTeamID FK\n        int awayTeamID FK\n    }\n    PLAYER {\n        int playerID PK\n        string name\n    }\n    SCORE {\n        int matchID FK\n        int teamScore\n        int opponentScore\n    }\n    PLAYER_STATS {\n        int matchID FK\n        int playerID FK\n        int goals\n        int assists\n        int minutesPlayed\n    }"
+  },
+  {
+    "objectID": "assignment4.html",
+    "href": "assignment4.html",
+    "title": "assignment4_2",
+    "section": "",
+    "text": "A strong entity set has a full primary key of its own, whereas a weak entity set lacks a standalone key and must combine its keys with its owner’s primary key via an identifying relationship to achieve uniqueness .\nFor example, in an order system, PurchaseOrder is a strong entity keyed by orderID, while LineItem is weak and is uniquely identified only by the combination of orderID and lineNumber.\n\n\n\n\n\n\n\nerDiagram\n    MATCH             ||--o{ SCORE           : has\n    MATCH             ||--o{ PLAYER_STATS    : records\n    PLAYER            ||--o{ PLAYER_STATS    : participates\n    TEAM              ||--o{ MATCH           : plays\n\n    MATCH {\n        int matchID PK\n        date matchDate\n    }\n    PLAYER {\n        int playerID PK\n        string name\n    }\n    SCORE {\n        int matchID FK\n        int teamScore\n        int opponentScore\n    }\n    PLAYER_STATS {\n        int matchID FK\n        int playerID FK\n        int goals\n        int assists\n        int minutesPlayed\n    }\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nerDiagram\n    TEAM              ||--o{ MATCH           : plays\n    MATCH             ||--o{ SCORE           : has\n    MATCH             ||--o{ PLAYER_STATS    : records\n    PLAYER            ||--o{ PLAYER_STATS    : participates\n\n    TEAM {\n        int teamID PK\n        string teamName\n    }\n    MATCH {\n        int matchID PK\n        date matchDate\n        int homeTeamID FK\n        int awayTeamID FK\n    }\n    PLAYER {\n        int playerID PK\n        string name\n    }\n    SCORE {\n        int matchID FK\n        int teamScore\n        int opponentScore\n    }\n    PLAYER_STATS {\n        int matchID FK\n        int playerID FK\n        int goals\n        int assists\n        int minutesPlayed\n    }"
+  },
+  {
+    "objectID": "assignment6.html",
+    "href": "assignment6.html",
+    "title": "assignment6",
+    "section": "",
+    "text": "The JSONPlaceholder site returns collections of resources (posts, comments, users) as JSON arrays of objects with nested key–value pairs. Each resource type is exposed via RESTful endpoints over HTTP, enabling AJAX clients to retrieve data in a uniform format. The backend typically serializes data from a document-oriented store into JSON and serves it through a REST API."
+  },
+  {
+    "objectID": "assignment6.html#a",
+    "href": "assignment6.html#a",
+    "title": "assignment6",
+    "section": "",
+    "text": "The JSONPlaceholder site returns collections of resources (posts, comments, users) as JSON arrays of objects with nested key–value pairs. Each resource type is exposed via RESTful endpoints over HTTP, enabling AJAX clients to retrieve data in a uniform format. The backend typically serializes data from a document-oriented store into JSON and serves it through a REST API."
+  },
+  {
+    "objectID": "assignment6.html#b",
+    "href": "assignment6.html#b",
+    "title": "assignment6",
+    "section": "1.b",
+    "text": "1.b\nThe BBC News RSS feed delivers news items as XML elements structured under a channel parent, with each item containing child elements like title, link, and description. This feed relies on the RSS XML standard, parsed by readers or transformed via XSLT, and is generated by server-side tools that serialize database records into an XML document."
+  },
+  {
+    "objectID": "assignment7.html",
+    "href": "assignment7.html",
+    "title": "assignment7",
+    "section": "",
+    "text": "1\nDone locally\n\n\n2\nDone locally"
+  },
+  {
+    "objectID": "assignment6.html#a-1",
+    "href": "assignment6.html#a-1",
+    "title": "assignment6",
+    "section": "2.a",
+    "text": "2.a\nSELECT s.ID FROM student AS s LEFT JOIN advisor AS a ON s.ID = a.s_id AND a.i_id IS NOT NULL WHERE a.s_id IS NULL;"
+  },
+  {
+    "objectID": "assignment6.html#b-1",
+    "href": "assignment6.html#b-1",
+    "title": "assignment6",
+    "section": "2.b",
+    "text": "2.b\nSELECT i.ID, i.name FROM instructor AS i JOIN teaches AS t ON i.ID = t.ID JOIN course AS c ON t.course_id = c.course_id AND c.dept_name = i.dept_name GROUP BY i.ID, i.name HAVING COUNT(DISTINCT c.course_id) = (SELECT COUNT(*) FROM course WHERE dept_name = i.dept_name) ORDER BY i.name;"
+  },
+  {
+    "objectID": "assignment6.html#section",
+    "href": "assignment6.html#section",
+    "title": "assignment6",
+    "section": "3",
+    "text": "3\nDone locally."
   }
 ]

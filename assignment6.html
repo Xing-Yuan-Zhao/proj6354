@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>assignment1 – 6354</title>
+<title>assignment6 – 6354</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,6 +125,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./assignment6.html">
  <span class="dropdown-text">Assignment 6</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./assignment7.html">
+ <span class="dropdown-text">Assignment 7</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -155,12 +159,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2.</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3.</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4.</a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">5.</a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">6.</a></li>
+  <li><a href="#a" id="toc-a" class="nav-link active" data-scroll-target="#a">1.a</a></li>
+  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">1.b</a></li>
+  <li><a href="#a-1" id="toc-a-1" class="nav-link" data-scroll-target="#a-1">2.a</a></li>
+  <li><a href="#b-1" id="toc-b-1" class="nav-link" data-scroll-target="#b-1">2.b</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">3</a></li>
   </ul>
 </nav>
     </div>
@@ -169,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">assignment1</h1>
+<h1 class="title">assignment6</h1>
 </div>
 
 
@@ -186,59 +189,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section">1.</h3>
-<p>Social media platforms that storage user information and link them with user generated contents information.</p>
-<p>Online shopping system that links user information, purchase orders, merchandise infomration and merchants.</p>
-<p>Foreign exchange platforms that links trading pairs information, position information and user information.</p>
+<section id="a" class="level2">
+<h2 class="anchored" data-anchor-id="a">1.a</h2>
+<p>The JSONPlaceholder site returns collections of resources (posts, comments, users) as JSON arrays of objects with nested key–value pairs. Each resource type is exposed via RESTful endpoints over HTTP, enabling AJAX clients to retrieve data in a uniform format. The backend typically serializes data from a document-oriented store into JSON and serves it through a REST API.</p>
 </section>
-<section id="section-1" class="level3">
-<h3 class="anchored" data-anchor-id="section-1">2.</h3>
-<p>We can propose the following applications in many fields:</p>
-<ol type="1">
-<li>A relational database that contains countries data and conflict event data for political science research.</li>
-</ol>
-<ol type="i">
-<li><p>The purpose is to understand the conflict and countries in an interactive manner, rather than using conflict event data or country wise data alone.</p></li>
-<li><p>In the country dataset, the unit will be country, and the country codes will be the key, with demographic, economic and other related data as values. In the conflict dataset, the unit will be the conflicts, with related duration, casualties, cause etc, in which country code will serve as a foreign key that links the country dataset.</p></li>
-<li><p>The interface should be on a world map, with conflicts on it.</p></li>
-</ol>
-<ol start="2" type="1">
-<li>A relational database that contains regions data and criminal activity data for criminology research.</li>
-</ol>
-<ol type="i">
-<li><p>The purpose is to get a relational data of the crime rates and regions for relative researchs.</p></li>
-<li><p>In the region dataset, there should be zip codes as the primary key, with demographic, economic and other related data as values. In the criminal activity dataset, the case number should be the key, with region zip code as foreign key and the case information as the values.</p></li>
-<li><p>The interface can be a map with criminal activity shown on it.</p></li>
-</ol>
-<ol start="3" type="1">
-<li>A relational database that links public companies, countries and regulation legislation activities can be established.</li>
-</ol>
-<ol type="i">
-<li><p>This database can contain information for public companies, countries and laws so that researchers can have a better understanding between regulation and company behaviors.</p></li>
-<li><p>In the country dataset, the unit will be country, and the country codes will be the key, with demographic, economic and other related data as values. In the company dataset, the unit will be company with their unique stock code as key and other information as value, with country as foreign key. In the legislation activity dataset, the unit would be a proposition of a bill, and the bill information will be the values with country being foregin key.</p></li>
-<li><p>The interface can be a world map.</p></li>
-</ol>
+<section id="b" class="level2">
+<h2 class="anchored" data-anchor-id="b">1.b</h2>
+<p>The BBC News RSS feed delivers news items as XML elements structured under a channel parent, with each item containing child elements like title, link, and description. This feed relies on the RSS XML standard, parsed by readers or transformed via XSLT, and is generated by server-side tools that serialize database records into an XML document.</p>
 </section>
-<section id="section-2" class="level3">
-<h3 class="anchored" data-anchor-id="section-2">3.</h3>
-<p>It is more than just retrieving, but also extracting insights and make further usage of the data.</p>
+<section id="a-1" class="level2">
+<h2 class="anchored" data-anchor-id="a-1">2.a</h2>
+<p>SELECT s.ID FROM student AS s LEFT JOIN advisor AS a ON s.ID = a.s_id AND a.i_id IS NOT NULL WHERE a.s_id IS NULL;</p>
 </section>
-<section id="section-3" class="level3">
-<h3 class="anchored" data-anchor-id="section-3">4.</h3>
-<p>There were a emergence of large quantity of unstructured data. The growing online business need to deal with that, so there is a need for such system.</p>
+<section id="b-1" class="level2">
+<h2 class="anchored" data-anchor-id="b-1">2.b</h2>
+<p>SELECT i.ID, i.name FROM instructor AS i JOIN teaches AS t ON i.ID = t.ID JOIN course AS c ON t.course_id = c.course_id AND c.dept_name = i.dept_name GROUP BY i.ID, i.name HAVING COUNT(DISTINCT c.course_id) = (SELECT COUNT(*) FROM course WHERE dept_name = i.dept_name) ORDER BY i.name;</p>
 </section>
-<section id="section-4" class="level3">
-<h3 class="anchored" data-anchor-id="section-4">5.</h3>
-<p>The current database may requires predetermined template, making dynamic alteration of data a hard task.</p>
-</section>
-<section id="section-5" class="level3">
-<h3 class="anchored" data-anchor-id="section-5">6.</h3>
-<ol type="1">
-<li><p>User data with unique user ID and other related information such as nickname, contact information etc as values;</p></li>
-<li><p>Post data with unique post ID and title, content and timestamp as values and user ID as a foreign key;</p></li>
-<li><p>Community data that contains posts and users. The community link can be key and posts and member users are values, linked with post ID and user ID.</p></li>
-</ol>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">3</h2>
+<p>Done locally.</p>
 
 
 </section>
